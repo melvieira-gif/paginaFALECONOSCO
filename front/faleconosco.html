@@ -13,6 +13,7 @@
     <!--Principais botões-->
     <div class="fundo_btn">
         <button class="btn branco" id="btn_contato">Fale Conosco</button>
+        <button class="btn branco" id="btn_login">Login</button>
     </div>
     <!--Parte fale conosco-->
     <div class="div_contato ocultar" id="div_contato">
@@ -40,13 +41,73 @@
             <p class="d_p" id="resultado">O resultado vai aparecer aqui</p>
         </div>
     </div>
+    <!--Parte do login-->
+    <div class="div_login ocultar" id="div_login">
+        <div id="login_fields">
+            <label for="input_email">email</label>
+            <br>
+            <input id="input_email" type="text" placeholder="Digite o seu email cadastrado">
+            <br>
+            <br>
+            <label for="input_senha">Senha</label>
+            <br>
+            <input id="input_senha" type="password" placeholder="Digite a senha cadastrado">
+            <br>
+            <br>
+            <button id="btn_cadastrar" class="btn2">Criar nova conta</button>
+            <br>
+            <br>
+            <button id="btn_entrar" class="btn2" onclick="alert('Cadastro realizado')">Entrar</button>
+        </div>
+        <!--parte do cadastro-->
+        <div class="div_cadastrar ocultar" id="div_cadastrar">
+            <label for="input_nome_lg">Nome completo</label>
+            <br>
+            <input id="input_nome_lg" type="text">
+            <br>
+            <br>
+            <label for="input_senha_cadastro">Senha</label>
+            <br>
+            <input id="input_senha_cadastro" type="password">
+            <br>
+            <br>
+            <label for="input_email_lg">Email</label>
+            <br>
+            <input id="input_email_lg" type="email">
+            <br>
+            <br>
+            <button id="btn_salvar_cadastro" class="btn2">Salvar</button>
+            <br>    
+           <p class="d_p" id="resultado_cadastro">Status do Cadastro aparecerá aqui</p>
+        </div>
+    </div>
 </body>
 
 <script>
+      // LOGIN
+    const loginFields = document.getElementById("login_fields");
+    const divCadastro = document.getElementById("div_cadastrar");
+
+    document.getElementById("btn_cadastrar").addEventListener("click", () => {
+        divCadastro.classList.remove("ocultar");
+        loginFields.style.display = "none";
+    });
+
+
     // para os botões sumirem/desaparecer login e fale conosco
     document.getElementById("btn_contato").addEventListener("click", () => {
         document.getElementById("div_contato").classList.toggle("ocultar");
+        document.getElementById("div_login").classList.add("ocultar");
+        divCadastro.classList.add("ocultar");
+        loginFields.style.display = "block";
     }); 
+    document.getElementById("btn_login").addEventListener("click", () => {
+        document.getElementById("div_login").classList.toggle("ocultar");
+        document.getElementById("div_contato").classList.add("ocultar");
+        divCadastro.classList.add("ocultar");
+        loginFields.style.display = "block";
+    }); 
+    
     // back+banco de dados
     // criar um evento para quando clicar no botão
     document.getElementById("btn_cadastro").addEventListener("click", async ()=>{
@@ -74,6 +135,34 @@
         if(resposta.ok){
             const dados = await resposta.json()
             document.getElementById("resultado").innerText = dados.resposta
+        }else{
+
+        }
+    })
+    // criar um evento para quando clicar no botão
+    document.getElementById("btn_salvar_cadastro").addEventListener("click", async ()=>{
+        // primeira etapa- pegar as informaçoes dos inputs 
+        const nome_compl = document.getElementById("input_nome_lg").value
+        const email = document.getElementById("input_email_lg").value
+        const senha = document.getElementById("input_senha_cadastro").value
+
+        // segunda etapa- fazer a requisição para o back-end o que o thunder client não mostra oq faz
+        // fetch funciona pq vai passar o endereço da requisição
+        const resposta = await fetch (`http://localhost:3000/cadastro_login`,{
+            method:"POST",
+            headers:{
+                "Accept":"application/json",
+                "Content-Type":"application/json" // o tipo de conteudo que estou mandando é o JSON
+            },
+            body:JSON.stringify({
+                "nome_compl":nome_compl,
+                "email":email,
+                "senha":senha})
+        })
+        // terceira etapa - pegar a resposta do back-end
+        if(resposta.ok){
+            const dados = await resposta.json()
+            document.getElementById("resultado_cadastro").innerText = dados.resposta
         }else{
 
         }

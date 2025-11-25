@@ -16,10 +16,28 @@
 
 
 -- Copiando estrutura do banco de dados para banco_projeto
+DROP DATABASE IF EXISTS `banco_projeto`;
 CREATE DATABASE IF NOT EXISTS `banco_projeto` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin */;
 USE `banco_projeto`;
 
+-- Copiando estrutura para tabela banco_projeto.cadastro_login
+DROP TABLE IF EXISTS `cadastro_login`;
+CREATE TABLE IF NOT EXISTS `cadastro_login` (
+  `id_cadastro` int(11) NOT NULL AUTO_INCREMENT,
+  `nome_compl` varchar(100) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `senha` text DEFAULT NULL,
+  KEY `id_cadastro` (`id_cadastro`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+-- Copiando dados para a tabela banco_projeto.cadastro_login: ~2 rows (aproximadamente)
+DELETE FROM `cadastro_login`;
+INSERT INTO `cadastro_login` (`id_cadastro`, `nome_compl`, `email`, `senha`) VALUES
+	(1, 'Melissa Cristina Gomes Vieira', 'melissacv1@gmail.com', '42b10cea24483140e478ca886dce271ccaa264fd71b4cad268ee998c951ec133'),
+	(2, 'Francine Souza', 'francinesouza@hotmail.com', '60f20966ce8cde77c5b5ae2d48ad76e48c876f8b666e691701a5a5bfb7b6ec36');
+
 -- Copiando estrutura para tabela banco_projeto.faleconosco
+DROP TABLE IF EXISTS `faleconosco`;
 CREATE TABLE IF NOT EXISTS `faleconosco` (
   `id_fale` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(50) NOT NULL DEFAULT '0',

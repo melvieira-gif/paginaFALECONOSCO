@@ -57,10 +57,51 @@ body{
     align-items: center;
 }
 
-.botao{
+.botao, .btn_salvar_cadastro, .btn_cadastrar, .btn_entrar{
     background-color: #F8BBD0;
     border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid #E91E63; /* Borda rosa escuro */
+    
 }
+
+.btn2 {
+    background: #E91E63; /* Cor de fundo */
+    opacity: 0.95; /* Opacidade */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra mais forte atrás do botão */
+    padding: 10px; /* Tamanho interno */
+    font-size: 12px; /* Tamanho da fonte */
+    font-weight: 600; /* Grossura da fonte */
+    border-radius: 10px; /* Arredonda os cantos do botão */
+    border: none; /* Remove borda padrão */
+    color: #fff; /* Cor da fonte */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */  
+}
+
+input {
+    border-radius: 8px; /* Bordas arredondadas */
+    border: 1px solid rgb(195, 195, 196); /* Borda cinza */
+    text-align: center; /* Centralizado */
+    padding: 10px; /* Espaçamento interno */
+    transition: border-color 0.3s; /* Transição suave para a cor da borda */
+}
+
+input:focus {
+    border-color: #E91E63; /* Muda a cor da borda ao focar */
+    outline: none; /* Remove o contorno padrão */
+}
+
+label {
+    color: #FFFFFF;                    /* Texto em branco */
+    font-size: 12px;                   /* Tamanho do texto */
+    font-weight: bold;                 /* Negrito */
+    text-align: center;                /* Centralizado */
+    margin-bottom: 15px;               /* Espaço abaixo do título */
+    letter-spacing: 0.5px;             /* Espaçamento entre letras */
+    text-transform: uppercase;         /* Deixa em maiúsculas */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2); /* Sombra suave para dar destaque */
+}
+
 
 /* Esconder conteúdo */
 .ocultar {
