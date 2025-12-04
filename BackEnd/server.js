@@ -112,6 +112,25 @@ app.post("/cadastro_login", async (req,res)=>{
     }
 })
 
+app.post("/trbalheConosco", async (req,res)=>{
+    try {
+     
+        // montando um mysql para inserir informaçoes na tabela 
+        sql = `INSERT INTO trabalhe (nome_compl, email, qual_vaga) VALUES (?,?,?)`
+        let [resul2] = await conexao.query(sql,[nome_compl, email, qual_vaga])
+
+        // para ve se houve cadastros ou não, 
+        if(resul2.affectedRows == 1){
+            return res.json({"resposta":"Cadastro feito com sucesso!"})
+        }else{
+            return res.json({"resposta":"Erro ao fazer o cadastro para vagas"})
+        } 
+        
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 
 app.listen(porta,()=>{
     console.log("servidor rodando")

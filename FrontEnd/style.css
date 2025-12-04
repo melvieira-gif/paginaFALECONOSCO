@@ -24,7 +24,7 @@ body{
     margin: 0px;
 }
 
-.div_contato, .div_login{
+.div_contato, .div_login, .div_home, .div_trabalhe{
     border: 2px solid #E91E63; /* Borda rosa escuro */
     padding: 15px;               /* Espaçamento interno das divs */
     margin-top: 180px;           /* Espaço acima das divs, abaixo dos botões fixos */
@@ -36,6 +36,18 @@ body{
     text-align: center;          /* Centraliza o texto dentro das divs */
     z-index: 1;                  /* Fica abaixo dos botões fixos */
     width: 500px; 
+}
+.div_trabalhe{
+    border: 2px solid #E91E63; /* Borda rosa escuro */
+    padding: 15px;               /* Espaçamento interno das divs */
+    margin-top: 180px;           /* Espaço acima das divs, abaixo dos botões fixos */
+    background-color: #ffffff; /* Fundo rosa claro das divs */
+    border-radius: 12px;         /* Cantos arredondados das divs */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave das divs */
+    width: 80%;                  /* Largura das divs */
+    max-width: 800px;            /* Largura máxima das divs */
+    text-align: center;          /* Centraliza o texto dentro das divs */
+    z-index: 1;                  /* Fica abaixo dos botões fixos */
 }
 .btn_entrar, .btn_branco{
     padding: 14px 28px;          /* Tamanho interno dos botões */
@@ -144,6 +156,52 @@ label {
     text-transform: uppercase;         /* Deixa em maiúsculas */
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2); /* Sombra suave para dar destaque */
 }
+
+
+
+.vaga{
+    background-color:#e67b9fdc(255, 240, 245, 0.9);
+    border: 2px solid #ff5993 ; /* Borda rosa clara */
+    border-radius: 20px;                         /* Cantos arredondados */
+    padding: 25px;                               /* Espaçamento interno */
+ 
+    font-weight: bold; 
+
+}
+
+.vagaULTIMA{
+    background-color:#e67b9fdc(255, 240, 245, 0.9);
+    border: 2px solid #ff5993 ; /* Borda rosa clara */
+    border-radius: 20px;                         /* Cantos arredondados */
+    padding: 25px;                               /* Espaçamento interno */
+    font-weight: bold; 
+    width: 80%;                                  /* Mais larga que as outras vagas */
+    margin-top: 60px;
+}
+
+.vaga .btn {
+    background-color:#E91E63;                   /* Fundo rosa */
+    color: white;                                /* Texto branco */
+    border: none;                                /* Sem borda */
+    padding: 10px 25px;                          /* Tamanho do botão */
+    border-radius: 20px;                         /* Arredonda o botão */
+    margin-top: 15px;                            /* Espaço acima do botão */
+    cursor: pointer;                             /* Mostra a "mãozinha" */
+    font-weight: bold;                           /* Texto forte */
+    transition: all 0.3s ease;                   /* Suaviza o efeito hover */
+}
+.vagaULTIMA .btn {
+    background-color:#E91E63;                   /* Fundo rosa */
+    color: white;                                /* Texto branco */
+    border: none;                                /* Sem borda */
+    padding: 10px 25px;                          /* Tamanho do botão */
+    border-radius: 20px;                         /* Arredonda o botão */
+    margin-top: 15px;                            /* Espaço acima do botão */
+    cursor: pointer;                             /* Mostra a "mãozinha" */
+    font-weight: bold;                           /* Texto forte */
+    transition: all 0.3s ease;                   /* Suaviza o efeito hover */
+}
+
 
 
 /* Esconder conteúdo */

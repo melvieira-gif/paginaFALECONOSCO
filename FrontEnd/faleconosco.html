@@ -17,6 +17,8 @@
         </figure>
         <button class="btn_branco" id="btn_contato">Fale Conosco</button>
         <button class="btn_branco" id="btn_login">Login</button>
+        <button class="btn_branco" id="btn_home">Home</button>
+        <button class="btn_branco" id="btn_trabalhe">Trabalhe Conosco</button>
     </div>
     
     <!--Parte fale conosco-->
@@ -87,6 +89,96 @@
            <p class="d_p" id="resultado_cadastro">Status do Cadastro aparecerá aqui</p>
         </div>
     </div>
+    <!--parte do home-->
+    <div  class="div_home ocultar" id="div_home">
+        <br>
+        <h1 class="h1_contato">Home</h1>
+        <h2 class="hmod">Revolucionando a Saúde com Inteligência Artificial</h2>
+        <h3 class="hmod">Soluções inovadoras para diagnósticos precisos e tratamentos personalizados</h3>
+        <br>
+        <h4 class="hmod">Funcionalidades principais</h4>
+        <p class="d_p">
+            - Análise de sintomas
+            <br>
+            - IA interpreta sintomas e oferece possíveis caminhos.
+            <br>
+            - Monitoramento de hábitos
+            <br>
+            - Acompanha sono, água, alimentação etc.
+            <br>
+            - Chat personalizado com IA
+            <br>
+            - Responde dúvidas e dá orientações gerais.
+            <br>
+            - Alertas e lembretes
+            <br>
+            - Remédio, consulta, hidratação, etc.
+            <br>
+            - Sugestões de bem-estar
+            <br>
+            - Exercícios, alimentação, cuidados diários.
+        </p>
+        <br>
+        <br>
+        <h4 class="hmod">Benefícios</h4>
+        <p class="d_p">
+            - Reduz o tempo de busca por informações confiáveis.
+            <br>
+            - Aumenta o autocuidado.
+            <br>
+            - Melhora a organização da saúde.
+            <br>
+            - Interface fácil e rápida.
+        </p>
+        <br>
+        <h4 class="hmod">Soluções</h4>
+            <p class="d_p">
+                • Diagnóstico Assistido por IA
+                <br>
+                • Personalização de tratamentos
+                <br>
+                • Monitoramento Remoto de pacientes
+                <br>
+                • Análise Preditiva para prevenção de doenças
+            </p>
+            <br><br>
+        <br><br>
+    </div>
+    <!-- trabalhe conosoco -->
+     <div class="div_trabalhe ocultar" id="div_trabalhe">
+        <h1 class="h1_contato">Vagas abertas</h1>
+        <!-- vagas -->
+        <div  class="vaga">
+            <h3>Cientista de Dados em Saúde</h3>
+                <p><strong>Requisitos:</strong></p>
+                <ul>
+                    <li>Experiência em machine learning</li>
+                    <li>Conhecimento em dados clínicos</li>
+                    <li>Paixão por inovação</li>
+                </ul>
+                <button class="btn" id="btn_candidate1"> <a href="vaga.html" target="_blank">Canditarte-se</a></button>
+        </div>
+    
+        <div class="vaga">
+            <h3>Engenheiro de Software para IA Médica</h3>
+            <p><strong>Requisitos:</strong></p>
+            <ul>
+                <li>Desenvolvimento de sistemas seguros e escaláveis</li>
+                <li>Experiência com APIs de saúde</li>
+            </ul>
+            <button class="btn" id="btn_candidate2"><a href="vaga.html" target="_blank">Canditarte-se</a></button>
+        </div>
+        <br>
+        <br>
+        <div class="vagaULTIMA">
+            <h3>Não encontrou sua vaga?</h3>
+            <p class="frase_envie_curriculo">Envie seu currículo e conte como você pode contribuir para a transformação
+                da saúde!
+            </p>
+            <button class="btn" id="btn_enviar_curriculo"><a href="vaga.html" target="_blank">Enviar Currículo</a></button>
+        </div>
+     </div>
+
 </body>
 
 <script>
@@ -94,25 +186,48 @@
     const loginFields = document.getElementById("login_fields");
     const divCadastro = document.getElementById("div_cadastrar");
 
+
     document.getElementById("btn_cadastrarLG").addEventListener("click", () => {
         divCadastro.classList.remove("ocultar");
         loginFields.style.display = "none";
     });
 
 
-    // para os botões sumirem/desaparecer login e fale conosco
+    // para os botões sumirem/desaparecer login e fale conosco e home
     document.getElementById("btn_contato").addEventListener("click", () => {
         document.getElementById("div_contato").classList.toggle("ocultar");
         document.getElementById("div_login").classList.add("ocultar");
+        document.getElementById("div_home").classList.add("ocultar");
+        document.getElementById("div_trabalhe").classList.add("ocultar");
         divCadastro.classList.add("ocultar");
         loginFields.style.display = "block";
     }); 
     document.getElementById("btn_login").addEventListener("click", () => {
         document.getElementById("div_login").classList.toggle("ocultar");
         document.getElementById("div_contato").classList.add("ocultar");
+        document.getElementById("div_home").classList.add("ocultar");
+        document.getElementById("div_trabalhe").classList.add("ocultar");
         divCadastro.classList.add("ocultar");
         loginFields.style.display = "block";
     }); 
+    document.getElementById("btn_home").addEventListener("click", () => {
+        document.getElementById("div_login").classList.add("ocultar");
+        document.getElementById("div_home").classList.toggle("ocultar");
+        document.getElementById("div_contato").classList.add("ocultar");
+        document.getElementById("div_trabalhe").classList.add("ocultar");
+        divCadastro.classList.add("ocultar");
+        loginFields.style.display = "block";
+    });
+
+    document.getElementById("btn_trabalhe").addEventListener("click", () => {
+        document.getElementById("div_login").classList.add("ocultar");
+        document.getElementById("div_trabalhe").classList.toggle("ocultar");
+        document.getElementById("div_contato").classList.add("ocultar");
+        document.getElementById("div_home").classList.add("ocultar");
+        divCadastro.classList.add("ocultar");
+        loginFields.style.display = "block";
+    });
+    
     
     // back+banco de dados
     // criar um evento para quando clicar no botão
