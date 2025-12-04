@@ -12,49 +12,116 @@
 
     <!--Principais botões-->
     <div class="fundo_btn">
-        <button class="btn branco" id="btn_contato">Fale Conosco</button>
+        <figure>
+            <img src="logoHEALTH.png" alt="LOGOTIPO HEALTH-IA">
+        </figure>
+        <button class="btn_branco" id="btn_contato">Fale Conosco</button>
+        <button class="btn_branco" id="btn_login">Login</button>
     </div>
+    
     <!--Parte fale conosco-->
     <div class="div_contato ocultar" id="div_contato">
-        <h1>Fale conosco</h1>
+        <h1 class="h1_contato">Fale conosco</h1>
         <!--preenchimento fale conosco-->
         <div id="div_formulario" class="div_formulario">
             <!--Parte nome-->
-            <label for="input_nome">Nome:</label>
-            <input id="input_nome" class="input_formulario" type="text" placeholder="Digite seu nome completo">
+            <label for="input_nomeFC">Nome:</label>
+            <input id="input_nomeFC" class="input_formulario" type="text" placeholder="Digite seu nome completo">
             <br><br>
             <!--Parte email-->
-            <label for="input_email">Email:</label>
-            <input id="input_email" class="input_formulario" type="email" placeholder="Insira seu email">
+            <label for="input_emailFC">Email:</label>
+            <input id="input_emailFC" class="input_formulario" type="email" placeholder="Insira seu email">
             <br><br>
             <!--Parte assunto-->
-            <label for="input_assunto">Assunto:</label>
-            <input id="input_assunto" class="input_formulario" type="text" placeholder="Digite qual assunto seria">
+            <label for="input_assuntoFC">Assunto:</label>
+            <input id="input_assuntoFC" class="input_formulario" type="text" placeholder="Digite qual assunto seria">
             <br><br>
             <!--Parte mensagem-->
-            <label for="input_msg">Mensagem:</label>
-            <input id="input_msg" class="input_formulario" type="text" placeholder="Digite qual mensagem seria">
+            <label for="input_msgFC">Mensagem:</label>
+            <input id="input_msgFC" class="input_formulario" type="text" placeholder="Digite qual mensagem seria">
             <br><br>
             <button class="botao" id="btn_cadastro">Enviar</button>
             <br>
+            <br>
             <p class="d_p" id="resultado">O resultado vai aparecer aqui</p>
+        </div>
+    </div>
+    <!--Parte do login-->
+    <div class="div_login ocultar" id="div_login">
+        <div id="login_fields">
+            <h1 class="h1_contato">Login</h1>
+            <label for="input_emailLG">email</label>
+            <br>
+            <input id="input_emailLG" type="text" placeholder="Digite o seu email cadastrado">
+            <br>
+            <br>
+            <label for="input_senhaLG">Senha</label>
+            <br>
+            <input id="input_senhaLG" type="password" placeholder="Digite a senha cadastrado">
+            <br>
+            <br>
+            <button id="btn_cadastrarLG" class="btn2">Criar nova conta</button>
+            <button id="btn_entrarLG" class="btn2" onclick="alert('Cadastro realizado')">Entrar</button>
+        </div>
+        <!--parte do cadastro-->
+        <div class="div_cadastrar ocultar" id="div_cadastrar">
+            <h1 class="h1_contato">Cadastro</h1>
+            <label for="input_nome_lg">Nome completo</label>
+            <br>
+            <input id="input_nome_lg" type="text">
+            <br>
+            <br>
+            <label for="input_senha_cadastro">Senha</label>
+            <br>
+            <input id="input_senha_cadastro" type="password">
+            <br>
+            <br>
+            <label for="input_email_lg">Email</label>
+            <br>
+            <input id="input_email_lg" type="email">
+            <br>
+            <br>
+            <button id="btn_salvar_cadastro" class="btn2">Salvar</button>
+            <br>    
+            <br>
+           <p class="d_p" id="resultado_cadastro">Status do Cadastro aparecerá aqui</p>
         </div>
     </div>
 </body>
 
 <script>
+      // LOGIN
+    const loginFields = document.getElementById("login_fields");
+    const divCadastro = document.getElementById("div_cadastrar");
+
+    document.getElementById("btn_cadastrarLG").addEventListener("click", () => {
+        divCadastro.classList.remove("ocultar");
+        loginFields.style.display = "none";
+    });
+
+
     // para os botões sumirem/desaparecer login e fale conosco
     document.getElementById("btn_contato").addEventListener("click", () => {
         document.getElementById("div_contato").classList.toggle("ocultar");
+        document.getElementById("div_login").classList.add("ocultar");
+        divCadastro.classList.add("ocultar");
+        loginFields.style.display = "block";
     }); 
+    document.getElementById("btn_login").addEventListener("click", () => {
+        document.getElementById("div_login").classList.toggle("ocultar");
+        document.getElementById("div_contato").classList.add("ocultar");
+        divCadastro.classList.add("ocultar");
+        loginFields.style.display = "block";
+    }); 
+    
     // back+banco de dados
     // criar um evento para quando clicar no botão
     document.getElementById("btn_cadastro").addEventListener("click", async ()=>{
         // primeira etapa- pegar as informaçoes dos inputs 
-        const nome = document.getElementById("input_nome").value
-        const email = document.getElementById("input_email").value
-        const assunto = document.getElementById("input_assunto").value
-        const mensagem = document.getElementById("input_msg").value
+        const nome = document.getElementById("input_nomeFC").value
+        const email = document.getElementById("input_emailFC").value
+        const assunto = document.getElementById("input_assuntoFC").value
+        const mensagem = document.getElementById("input_msgFC").value
 
         // segunda etapa- fazer a requisição para o back-end o que o thunder client não mostra oq faz
         // fetch funciona pq vai passar o endereço da requisição
@@ -74,6 +141,34 @@
         if(resposta.ok){
             const dados = await resposta.json()
             document.getElementById("resultado").innerText = dados.resposta
+        }else{
+
+        }
+    })
+    // criar um evento para quando clicar no botão
+    document.getElementById("btn_salvar_cadastro").addEventListener("click", async ()=>{
+        // primeira etapa- pegar as informaçoes dos inputs 
+        const nome_compl = document.getElementById("input_nome_lg").value
+        const email = document.getElementById("input_email_lg").value
+        const senha = document.getElementById("input_senha_cadastro").value
+
+        // segunda etapa- fazer a requisição para o back-end o que o thunder client não mostra oq faz
+        // fetch funciona pq vai passar o endereço da requisição
+        const resposta = await fetch (`http://localhost:3000/cadastro_login`,{
+            method:"POST",
+            headers:{
+                "Accept":"application/json",
+                "Content-Type":"application/json" // o tipo de conteudo que estou mandando é o JSON
+            },
+            body:JSON.stringify({
+                "nome_compl":nome_compl,
+                "email":email,
+                "senha":senha})
+        })
+        // terceira etapa - pegar a resposta do back-end
+        if(resposta.ok){
+            const dados = await resposta.json()
+            document.getElementById("resultado_cadastro").innerText = dados.resposta
         }else{
 
         }
